@@ -9,7 +9,7 @@
   <meta name="keywords" content="Freelancer, Freela, Trabalho por hora">
   <meta name="author" content="Gabriel Machado">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <title>Freelas</title>
 
   <link rel="stylesheet" href="/styles/css/global.css"/>
@@ -37,7 +37,7 @@
   <h3 class="centralizar">Calcule seu valor/hora:</h3>
   <br>
 
-  <form class="centralizar">
+  <form id="FormValorHora" class="centralizar">
       <label for="faturamentomes">Quanto você quer faturar por mês com seus serviço de freelancer:</label>
       <input type="text" id="faturamentomes" name="faturamentomes"><br><br>
       <label for="horas">Qual o número de horas por dia que você planeja trabalhar:</label>
@@ -47,7 +47,7 @@
       <label for="ferias">Quantas semanas de férias você planeja tirar no ano:</label>
       <input type="text" id="ferias" name="ferias"><br><br>        
       <br>
-      <input id="botao" class="botao__texto" type="submit" value="CALCULAR SEU VALOR/HORA"/>
+      <input class="botao__texto" type="submit" onClick="calcularValorHora()" value="CALCULAR SEU VALOR/HORA"/>
   </form>
 
   <br><br><br><br>
@@ -55,15 +55,17 @@
   <h3 class="centralizar">Calcule o valor de um projeto:</h3>
   <br>
 
-  <form onsubmit="ConfirmaEnvio()" class="centralizar">
+  <form id="FormValorProjeto" class="centralizar">
       <label for="faturamentohora">Quanto você fatura por hora:</label>
       <input type="text" id="faturamentohora" name="faturamentohora"><br><br>
       <label for="horasproj">Quantas horas você vai trabalhar no projeto, por dia:</label>
       <input type="text" id="horasproj" name="horasproj"><br><br>
       <label for="diasproj">Quantos dias você estima que o projeto vai durar:</label>
       <input type="text" id="diasproj" name="diasproj"><br><br>
+      <label for="nomeproj">Qual o nome desse projeto:</label>
+      <input type="text" id="nomeproj" name="nomeproj"><br><br>
       <br>
-      <input id="botao" class="botao__texto" type="submit" value="CALCULAR O PREÇO DO SEU PROJETO"/>
+      <input class="botao__texto" type="submit" onClick="calcularValorProjeto()" value="CALCULAR O PREÇO DO SEU PROJETO"/>
   </form>
 
   <!--RODAPÉ-->
@@ -86,7 +88,7 @@
     <footer class="footer">2023 Freelas - Todos os direitos reservados</footer>
   </section>
   
-  <script src='JS1.js'></script>  
+  <script src='JS1.js'></script>
 </body>
 
 </html>

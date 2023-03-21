@@ -1,15 +1,10 @@
-// let faturamentomes = document.getElementById("faturamentomes").value
-// let horas = document.getElementById("horas").value
-// let dias = document.getElementById("dias").value
-// let ferias = document.getElementById("ferias").value
 
-let faturamentomes = parseInt (prompt("Quanto você quer faturar por mês com seus serviço de freelancer:"))
-let horas = parseInt (prompt("Qual o número de horas por dia que você planeja trabalhar:"))
-let dias = parseInt (prompt("Você pretende trabalhar em quantos dias da semana:"))
-let ferias = parseInt (prompt("Quantas semanas de férias você planeja tirar no ano:"))
-let geralfaturamentodia 
-let geralhorasproj
-let geraldiasproj
+const calcularValorHora = () => {
+
+let faturamentomes = document.getElementById("faturamentomes").value
+let horas = document.getElementById("horas").value
+let dias = document.getElementById("dias").value
+let ferias = document.getElementById("ferias").value
 
 const multiplicacao = (a , b) => a * b
 const divisao = (a , b) => a / b
@@ -19,27 +14,38 @@ let horasnomes = parseInt (multiplicacao (4.3 , multiplicacao (dias , horas)))
 let horasnomessemferias = parseInt (subtracao (horasnomes, divisao (multiplicacao(ferias, multiplicacao (horas , dias)) , 12) ))
 let faturamentodia = parseInt (divisao (faturamentomes , horasnomessemferias))
 
-let horasproj = parseInt (prompt("O custo da sua hora de trabalho a ser cobrado é de R$" + faturamentodia + ",00. Pensando em um projeto a ser executado, quantas horas você vai trabalhar no projeto, por dia:"))
-let diasproj = parseInt (prompt("Quantos dias você estima que o projeto vai durar:"))
-let nomeproj = (prompt("Qual nome você dará a esse projeto:"))
+alert ("O custo da sua hora de trabalho a ser cobrado é de R$" + faturamentodia + ",00.")
 
-//CONTRUCTOR
+}
+
+const calcularValorProjeto = () => {
+
+let faturamentohora = document.getElementById("faturamentohora").value
+let horasproj = document.getElementById("horasproj").value
+let diasproj = document.getElementById("diasproj").value
+let nomeproj = document.getElementById("nomeproj").value
+
+let geralfaturamentohora
+let geralhorasproj
+let geraldiasproj
+
+//CONSTRUCTOR
 class projeto{
-    constructor(geralnomeproj, geralfaturamentodia, geralhorasproj, geraldiasproj) {
+    constructor(geralnomeproj, geralfaturamentohora, geralhorasproj, geraldiasproj) {
         this.geralnomeproj = geralnomeproj;
-        this.geralfaturamentodia = geralfaturamentodia;
+        this.geralfaturamentohora = geralfaturamentohora;
         this.geralhorasproj = geralhorasproj;
         this.geraldiasproj = geraldiasproj;
         }
     calcularprecoproj(){
-        this.precoproj = this.geralfaturamentodia*this.geralhorasproj*this.geraldiasproj;
+        this.precoproj = this.geralfaturamentohora*this.geralhorasproj*this.geraldiasproj;
     }
 }
 
 const projetopadrao = new projeto("Projeto Padrão", 100, 8, 10);
 const projetobarato = new projeto("Projeto Baixo Custo", 50, 8, 10);
 const projetocaro = new projeto("Projeto Alto Custo", 250, 8, 10);
-const projeto1 = new projeto(nomeproj, faturamentodia, horasproj, diasproj);
+const projeto1 = new projeto(nomeproj, faturamentohora, horasproj, diasproj);
 
 projeto1.calcularprecoproj();
 projetopadrao.calcularprecoproj();
@@ -74,18 +80,14 @@ if (resultadocheck === undefined) {
     alert ("O nome consultado não consta na lista.")
 }
 
-let novoelemento = document.createElement("p");
-novoelemento.innerHTML = "Inserção no HTML por JS"; 
-document.body.append(novoelemento);
-
 //EVENTOS
 
-let inputcampos  = document.getElementById("faturamentomes")
-inputcampos.addEventListener("Campo modificado", AlertaInput)
-function AlertaInput () {
-    alert(inputcampos.value)
+function FormEnviado (e) {
+    e.preventDefault();
+    console.log("Informações para cálculo de valor/hora enviadas")
 }
 
-function ConfirmaEnvio() {
-    alert("Obrigado por enviar as informações");
+let FormValorHora = document.getElementById("FormValorHora")
+FormValorHora.addEventListener("submit", FormEnviado)
+
 }
